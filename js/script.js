@@ -17,19 +17,16 @@ menuItems.forEach(item => {
     }
 });
 
-// Form validation and submission handling
 const contactForm = document.querySelector('.contact-form');
 if(contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Add loading state to button
+
         const submitBtn = this.querySelector('.submit-btn');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
         
-        // Simulate form submission (replace with actual form submission)
         setTimeout(() => {
             alert('Thank you for your message! I will get back to you soon.');
             contactForm.reset();
