@@ -1,0 +1,40 @@
+.about-content .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-description {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.competitive-achievements,
+.achievements {
+    margin-top: 2rem;
+}
+
+.competitive-achievements h2,
+.achievements h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.competitive-achievements ul,
+.achievements ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.competitive-achievements li,
+.achievements li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .about-description {
+        padding: 1.5rem;
+    }
+}

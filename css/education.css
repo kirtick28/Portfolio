@@ -1,0 +1,61 @@
+.education-grid,
+.certification-grid {
+    display: grid;
+    gap: 3rem;
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.education-card,
+.certification-card {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--accent-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.education-card:hover,
+.certification-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 200, 255, 0.2);
+}
+
+.education-card h2,
+.certification-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.education-date,
+.certification-date {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.education-details,
+.certification-details {
+    margin-top: 1rem;
+}
+
+.education-details ul,
+.certification-details ul {
+    list-style-position: inside;
+    padding-left: 1rem;
+}
+
+.education-details li,
+.certification-details li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .education-card,
+    .certification-card {
+        padding: 1.5rem;
+    }
+}
