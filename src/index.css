@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css');
+@import 'tailwindcss';
+
+:root {
+  --night: #090a0f;
+  --night-card: #12131a;
+  --night-card-border: rgba(255, 255, 255, 0.12);
+  --light-bg: #ececf0;
+  --light-card: #ffffff;
+  --light-border: rgba(0, 0, 0, 0.09);
+  --light-text: #111218;
+  --light-muted: #5e606e;
+  --neon-purple: #8a2be2;
+  --neon-pink: #f72585;
+  --neon-coral: #ff5e7e;
+  --neon-lime: #b5ff39;
+  --neon-blue: #3a86ff;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  background-color: var(--night);
+  color: #f3f4f8;
+  font-family: var(--font-body);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--night);
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--neon-pink);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #232533;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e4157;
+}
+
+/* Typography Helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Neon Pill Gradient Button from Reference */
+.btn-neon-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(95deg, #7b2cbf 0%, #c72585 50%, #f72585 100%);
+  box-shadow:
+    0 0 25px rgba(247, 37, 133, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+.btn-neon-pill:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 35px rgba(247, 37, 133, 0.65),
+    0 10px 20px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.1);
+}
+
+.btn-glass-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #e2e4ed;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* 3D Embossed Heading Effect (Reference Image 1, 5, 6) */
+.title-3d {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  color: #e5e7eb;
+  text-shadow:
+    0 1px 0 #cccccc,
+    0 2px 0 #b3b3b3,
+    0 3px 0 #999999,
+    0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title-3d-light {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+  color: #1a1b24;
+  text-shadow:
+    0 1px 0 #ffffff,
+    0 3px 1px rgba(0, 0, 0, 0.12),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Outline Typography from Reference */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.75);
+}
+
+.text-outline-dark {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(20, 20, 26, 0.85);
+}
+
+/* Floating 3D Sticker Animations (Reference Images 3 & 4) */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(4deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-5deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+/* 3D Floating Stickers Shading & Lighting */
+.sticker-3d-star {
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 20px rgba(138, 43, 226, 0.35));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.sticker-3d-star:hover {
+  transform: scale(1.15) rotate(15deg);
+}
+
+.sticker-3d-cube {
+  filter: drop-shadow(0 18px 30px rgba(26, 54, 138, 0.5))
+    drop-shadow(0 0 25px rgba(58, 134, 255, 0.4));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.sticker-3d-cube:hover {
+  transform: scale(1.15) rotate(-12deg);
+}
+
+.sticker-3d-heart {
+  filter: drop-shadow(0 18px 25px rgba(180, 20, 50, 0.5))
+    drop-shadow(0 0 25px rgba(255, 77, 109, 0.4));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.sticker-3d-heart:hover {
+  transform: scale(1.18) rotate(10deg);
+}
+
+.sticker-3d-flower {
+  filter: drop-shadow(0 18px 30px rgba(90, 30, 160, 0.45))
+    drop-shadow(0 0 25px rgba(199, 125, 255, 0.35));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.sticker-3d-flower:hover {
+  transform: scale(1.15) rotate(-18deg);
+}
+
+/* Ticker Marquee Animation */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Sticky Stacking Project Cards (Reference Images 6, 7, 8, 9) */
+.project-stack-container {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.project-card-sticky {
+  position: sticky;
+  transition: transform 0.2s ease;
+  box-shadow:
+    0 -10px 40px rgba(0, 0, 0, 0.7),
+    0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+/* Avatar Stage Backlight and 3D Perspective */
+.avatar-stage-wrap {
+  perspective: 1000px;
+}
+
+.avatar-halo-glow {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  background: radial-gradient(
+    circle,
+    rgba(138, 43, 226, 0.28) 0%,
+    rgba(247, 37, 133, 0.16) 45%,
+    transparent 72%
+  );
+  border-radius: 50%;
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* Geometric Glyphs Strip in Footer (Reference Image 10) */
+.glyph-item {
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.3s ease;
+  cursor: pointer;
+}
+.glyph-item:hover {
+  transform: translateY(-8px) scale(1.12);
+  filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.2));
+}
+
+.hero-title {
+  font-size: clamp(3.5rem, 6.5vw, 6.9rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.hero-title > span {
+  white-space: nowrap;
+}
+
+.avatar-stage-wrap {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-title {
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+  }
+
+  .avatar-stage-wrap {
+    max-width: 390px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(3rem, 13vw, 4.25rem);
+    letter-spacing: -0.04em;
+  }
+}
