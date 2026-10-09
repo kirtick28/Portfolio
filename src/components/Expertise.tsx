@@ -2,13 +2,11 @@ import { useRef } from 'react';
 import type { MouseEvent } from 'react';
 import {
   Activity,
-  ArrowUpRight,
   Code2,
   Database,
   LockKeyhole,
   Server,
-  ShieldCheck,
-  Workflow
+  ShieldCheck
 } from 'lucide-react';
 import {
   motion,
