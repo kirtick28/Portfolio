@@ -35,3 +35,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.swp
+
+# AI Generated Images
+/AI-Generated-Images
