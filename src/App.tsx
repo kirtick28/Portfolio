@@ -5,7 +5,9 @@ import About from './components/About';
 import Expertise from './components/Expertise';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import ContactFooter from './components/ContactFooter';
+import CodingProfiles from './components/CodingProfiles';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -18,8 +20,10 @@ export default function App() {
         <Expertise />
         <Experience />
         <Projects />
+        <CodingProfiles />
+        <Contact />
       </main>
-      <ContactFooter />
+      <Footer />
     </div>
   );
 }

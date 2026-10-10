@@ -51,7 +51,7 @@ export default function Hero() {
             >
               <span className="block whitespace-nowrap">HI, I'M</span>
               <span className="block whitespace-nowrap text-white drop-shadow-[0_8px_24px_rgba(255,255,255,0.12)]">
-                KIRTICK
+                KIRTICK M M
               </span>
             </motion.h1>
 

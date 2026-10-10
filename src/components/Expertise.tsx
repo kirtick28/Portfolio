@@ -363,7 +363,7 @@ export default function Expertise() {
   return (
     <section
       id="expertise"
-      className="relative isolate overflow-hidden bg-[#08080c] py-24 text-white sm:py-32"
+      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#08080c] py-24 text-white sm:py-32"
     >
       {/* Ambient background lighting */}
       <div
@@ -378,24 +378,13 @@ export default function Expertise() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
         {/* Section heading */}
-        <div className="mb-14 flex flex-col justify-between gap-6 border-b border-white/[0.10] pb-8 sm:mb-16 sm:pb-10 md:flex-row md:items-end">
-          <div>
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-7 bg-[#f72585]" />
-              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#f472b6]">
-                WHAT I WORK ON
-              </span>
-            </div>
-
-            <h2 className="title-3d text-5xl sm:text-7xl md:text-8xl">
-              EXPERTISE
-            </h2>
-          </div>
-
-          <p className="max-w-sm text-sm leading-7 text-[#9699ab]">
-            The areas where I combine engineering fundamentals, practical
-            experience, and attention to detail.
-          </p>
+        <div className="mb-32 flex flex-col items-center justify-center text-center">
+          <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
+            What I Work On
+          </span>
+          <h2 className="font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl bg-gradient-to-br from-white to-white/30 bg-clip-text text-transparent">
+            EXPERTISE
+          </h2>
         </div>
 
         {/* Expertise cards */}

@@ -159,13 +159,11 @@ export default function About() {
           </motion.div>
         </motion.div>
 
-        {/* Section Heading */}
-        <div className="mb-10">
-          <span className="text-xs font-mono tracking-widest text-[#f72585] uppercase mb-4 block font-semibold">
-            ABOUT ME
+        <div className="mb-10 flex flex-col items-center justify-center text-center">
+          <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
+            Small Things
           </span>
-
-          <h2 className="title-3d text-5xl sm:text-7xl md:text-8xl">
+          <h2 className="font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl bg-gradient-to-br from-white to-white/30 bg-clip-text text-transparent">
             ABOUT ME
           </h2>
         </div>

@@ -11,8 +11,9 @@ export default function Projects() {
       description:
         'A comprehensive MERN-based enterprise resource planning platform enforcing JWT authentication, interactive real-time stock analytics with Chart.js, automated PDF invoice generation via Puppeteer, and Cloudinary media pipelines.',
       tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Puppeteer', 'Chart.js'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/kirtick28',
+      liveUrl: 'https://spark-stock-pro-inventory-erp.vercel.app/',
+      githubUrl: 'https://github.com/kirtick28/SparkStock-Pro-Inventory-ERP',
+      image: '/projects/Inventory-Management-System.png',
       previewTheme: 'from-[#1a122e] to-[#0c0d16]',
       accentColor: '#f72585',
       bentoItems: [
@@ -36,8 +37,9 @@ export default function Projects() {
       description:
         'Zero-knowledge full-stack credential manager designed with Next.js and Tailwind CSS. Built with bcrypt password hashing, encrypted MongoDB schemas, and an interactive password generator with real-time entropy calculation.',
       tags: ['Next.js', 'React', 'Tailwind CSS', 'MongoDB', 'Bcrypt', 'JWT'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/kirtick28',
+      liveUrl: 'https://password-manager-seven-nu.vercel.app/',
+      githubUrl: 'https://github.com/kirtick28/Password-Manager',
+      image: '/projects/Credential-Manager.png',
       previewTheme: 'from-[#0e1b2e] to-[#0a0f1b]',
       accentColor: '#3a86ff',
       bentoItems: [
@@ -52,57 +54,28 @@ export default function Projects() {
           sub: 'Stateless encrypted authentication'
         }
       ]
-    },
-    {
-      num: '03',
-      category: 'OBSERVABILITY & DISTRIBUTED SYSTEMS',
-      client: 'PAYPAL TELEMETRY INSIGHT',
-      title: 'Multi-Level Operational Health Dashboard',
-      description:
-        'High-density telemetry dashboard designed to give engineers deep visibility into live microservice architectures. Implements 4-tier drill-down monitoring from cluster heatmaps down to Availability Zone host metrics.',
-      tags: ['Datadog', 'TypeScript', 'Node.js', 'Docker', 'Microservices'],
-      liveUrl: '#',
-      githubUrl: 'https://github.com/kirtick28',
-      previewTheme: 'from-[#1a2318] to-[#0a110a]',
-      accentColor: '#b5ff39',
-      bentoItems: [
-        {
-          label: 'Drill-Down Depth',
-          value: '4-Tier Hierarchy',
-          sub: 'Cluster → Service → Host → AZ'
-        },
-        {
-          label: 'Repos Covered',
-          value: '7 Microservices',
-          sub: 'Live flow blockage detection'
-        }
-      ]
     }
   ];
 
   return (
-    <section id="projects" className="py-28 sm:py-36 bg-[#08080c] relative">
+    <section
+      id="projects"
+      className="py-28 sm:py-36 border-t border-white/[0.09] bg-[#08080c] relative"
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        {/* Section Heading matching Reference Image 6 */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-white/10">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-[#f72585] font-bold block mb-3">
-              SELECTED WORK
-            </span>
-            <h2 className="title-3d text-6xl sm:text-8xl md:text-9xl tracking-tight">
-              PROJECTS
-            </h2>
-          </div>
-          <p className="mt-4 md:mt-0 max-w-sm text-sm text-[#9da0b5] font-normal leading-relaxed">
-            Real products, clean architectures, and live systems built with
-            precision.
-          </p>
+        {/* Section Heading */}
+        <div className="mb-32 flex flex-col items-center justify-center text-center">
+          <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
+            Selected Work
+          </span>
+          <h2 className="font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl bg-gradient-to-br from-white to-white/30 bg-clip-text text-transparent">
+            PROJECTS
+          </h2>
         </div>
 
-        {/* Sticky Stacking Cards Container matching Reference Images 7 & 8 */}
+        {/* Sticky Stacking Cards Container */}
         <div className="space-y-12 sm:space-y-16">
           {projects.map((proj, idx) => {
-            // Incremental sticky top offsets so cards stack like tabs
             const topOffset = 80 + idx * 45;
 
             return (
@@ -111,7 +84,7 @@ export default function Projects() {
                 style={{ top: `${topOffset}px` }}
                 className="project-card-sticky rounded-3xl bg-[#11121a] border border-white/15 p-6 sm:p-10 z-10"
               >
-                {/* Card Header matching Reference Image 6 */}
+                {/* Card Header */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
                   <div className="flex items-center gap-6">
                     <span className="font-display font-black text-4xl sm:text-5xl text-white">
@@ -173,38 +146,62 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Right Column: Visual Bento Gallery matching Reference Images 6 & 8 */}
+                  {/* Right Column: Visual Bento Gallery */}
                   <div className="lg:col-span-7">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {/* Dominant Main Visual Panel */}
+                      {/* Dominant Main Visual Panel (Handles both Image & Gradient Fallback) */}
                       <div
-                        className={`sm:col-span-2 aspect-[16/8] rounded-2xl bg-gradient-to-br ${proj.previewTheme} border border-white/10 p-6 flex flex-col justify-between relative overflow-hidden group`}
+                        className={`sm:col-span-2 aspect-[16/8] rounded-2xl border border-white/10 relative overflow-hidden group ${
+                          proj.image
+                            ? 'bg-[#050508]'
+                            : `bg-gradient-to-br ${proj.previewTheme} p-6 flex flex-col justify-between`
+                        }`}
                       >
-                        {/* Decorative background glow */}
-                        <div
-                          className="absolute -right-10 -bottom-10 w-44 h-44 rounded-full blur-3xl opacity-30 pointer-events-none"
-                          style={{ backgroundColor: proj.accentColor }}
-                        />
+                        {proj.image ? (
+                          /* IMAGE MODE */
+                          <>
+                            <img
+                              src={proj.image}
+                              alt={`${proj.client} interface preview`}
+                              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                            />
+                            {/* Glassmorphic Window Controls */}
+                            <div className="absolute top-4 left-4 flex items-center gap-2 z-10 px-3 py-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-full">
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                            </div>
+                          </>
+                        ) : (
+                          /* FALLBACK GRADIENT MODE */
+                          <>
+                            <div
+                              className="absolute -right-10 -bottom-10 w-44 h-44 rounded-full blur-3xl opacity-30 pointer-events-none"
+                              style={{ backgroundColor: proj.accentColor }}
+                            />
 
-                        <div className="flex justify-between items-start z-10">
-                          <div className="flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                          </div>
-                          <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/10 text-white">
-                            v1.0 ACTIVE
-                          </span>
-                        </div>
+                            <div className="flex justify-between items-start z-10 relative">
+                              <div className="flex items-center gap-2">
+                                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                              </div>
+                              <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/10 text-white">
+                                v1.0 ACTIVE
+                              </span>
+                            </div>
 
-                        <div className="z-10 mt-6">
-                          <div className="font-display font-extrabold text-2xl sm:text-3xl text-white mb-1">
-                            {proj.client}
-                          </div>
-                          <p className="text-xs font-mono text-[#a0a3b6]">
-                            Architected for high throughput and zero latency.
-                          </p>
-                        </div>
+                            <div className="z-10 mt-6 relative">
+                              <div className="font-display font-extrabold text-2xl sm:text-3xl text-white mb-1">
+                                {proj.client}
+                              </div>
+                              <p className="text-xs font-mono text-[#a0a3b6]">
+                                Architected for high throughput and zero
+                                latency.
+                              </p>
+                            </div>
+                          </>
+                        )}
                       </div>
 
                       {/* Sub Panel 1 */}
