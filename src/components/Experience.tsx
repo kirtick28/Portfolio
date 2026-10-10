@@ -81,7 +81,7 @@ function ExperienceFlowItem({
           <div
             className={`flex items-center gap-3 ${isLeft ? 'flex-row-reverse' : 'flex-row'}`}
           >
-            <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-[#f1f1f5] leading-tight">
+            <h3 className="experience-role font-display text-3xl md:text-4xl font-bold tracking-tight leading-tight">
               {exp.role}
             </h3>
             <a
@@ -159,14 +159,14 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#050508] py-16 text-white sm:py-20 lg:py-24"
+      className="experience-section relative isolate overflow-hidden border-t py-16 sm:py-20 lg:py-24"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
         <div className="mb-16 flex flex-col items-center justify-center text-center sm:mb-24">
           <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
             The Journey So Far
           </span>
-          <h2 className="font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl bg-gradient-to-br from-white to-white/30 bg-clip-text text-transparent">
+          <h2 className="experience-heading font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl">
             EXPERIENCE
           </h2>
         </div>

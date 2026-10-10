@@ -11,8 +11,9 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#08080c] text-white selection:bg-[#f72585] selection:text-white">
+    <div className="app-shell min-h-screen">
       <Navigation />
+
       <main>
         <Hero />
         <TechMarquee />
@@ -23,6 +24,7 @@ export default function App() {
         <CompetitiveProgramming />
         <Contact />
       </main>
+
       <Footer />
     </div>
   );

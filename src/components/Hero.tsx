@@ -60,7 +60,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#08080c] px-6 pb-0 pt-24 sm:px-10 sm:pb-0 sm:pt-28 lg:px-12 lg:pt-20"
+      className="hero-section relative isolate flex min-h-[100svh] flex-col overflow-hidden px-6 pb-0 pt-24 sm:px-10 sm:pb-0 sm:pt-28 lg:px-12 lg:pt-20"
     >
       {/* Background atmosphere */}
       <div
@@ -79,7 +79,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-[clamp(2.5rem,7.2vw,6rem)] font-extrabold leading-[1.08] tracking-[-0.065em] text-white"
+          className="text-[clamp(2.5rem,7.2vw,6rem)] font-extrabold leading-[1.08] tracking-[-0.065em] text-theme-primary"
         >
           I'm{' '}
           <span className="bg-gradient-to-r from-[#a855f7] via-[#d946b9] to-[#f72585] bg-clip-text text-transparent">
@@ -91,7 +91,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-5 h-7 text-base font-normal tracking-wide text-[#aaa7b7] sm:mt-6 sm:text-lg"
+          className="mt-5 h-7 text-base font-normal tracking-wide text-theme-secondary sm:mt-6 sm:text-lg"
           aria-label={displayText}
         >
           {displayText}
@@ -109,7 +109,7 @@ export default function Hero() {
           className="order-2 flex flex-col gap-8 sm:gap-10 lg:order-1 lg:gap-12"
         >
           <div>
-            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.24em] text-[#777384]">
+            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.24em] text-theme-muted">
               Elsewhere
             </p>
 
@@ -120,16 +120,16 @@ export default function Hero() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 text-sm text-[#d0cdd8] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946b9]"
+                  className="group inline-flex items-center gap-2.5 text-sm text-theme-body transition-colors duration-300 hover:text-theme-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d946b9]"
                 >
                   <Icon
                     size={17}
-                    className="text-[#aaa5b6] transition-colors group-hover:text-[#e879f9]"
+                    className="text-theme-icon transition-colors group-hover:text-[#e879f9]"
                   />
                   <span>{label}</span>
                   <ArrowUpRight
                     size={13}
-                    className="-translate-y-0.5 text-[#777384] opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+                    className="-translate-y-0.5 text-theme-muted opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
                   />
                 </a>
               ))}
@@ -137,24 +137,24 @@ export default function Hero() {
           </div>
 
           <div className="max-w-[290px]">
-            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#777384]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-theme-muted">
               A little about me
             </p>
 
-            <p className="mt-4 text-[15px] leading-[1.9] text-[#aaa7b7]">
+            <p className="mt-4 text-[15px] leading-[1.9] text-theme-secondary">
               I build for the web, explore backend engineering, and enjoy
               understanding how things work beneath the surface.
             </p>
           </div>
 
           <div className="hidden lg:block">
-            <p className="text-xs tracking-wide text-[#777384]">
+            <p className="text-xs tracking-wide text-theme-muted">
               Based in Coimbatore, India
             </p>
           </div>
         </motion.aside>
 
-        {/* Center: Your original character */}
+        {/* Center: Original character */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ export default function Hero() {
           className="order-3 flex flex-col gap-8 pb-8 lg:gap-12 lg:pb-10"
         >
           <div>
-            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.24em] text-[#777384]">
+            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.24em] text-theme-muted">
               My toolkit
             </p>
 
@@ -194,11 +194,11 @@ export default function Hero() {
               {TECHNOLOGIES.map((tech, index) => (
                 <span
                   key={tech}
-                  className="text-[15px] font-medium tracking-[-0.02em] text-[#c7c2d0] transition-colors duration-300 hover:text-[#f0abfc] sm:text-base"
+                  className="text-[15px] font-medium tracking-[-0.02em] text-theme-body transition-colors duration-300 hover:text-[#f0abfc] sm:text-base"
                 >
                   {tech}
                   {index !== TECHNOLOGIES.length - 1 && (
-                    <span className="ml-2 text-[#5b5267]">/</span>
+                    <span className="ml-2 text-theme-separator">/</span>
                   )}
                 </span>
               ))}
@@ -206,18 +206,18 @@ export default function Hero() {
           </div>
 
           <div className="max-w-[310px]">
-            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#777384]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-theme-muted">
               My approach
             </p>
 
-            <p className="mt-4 text-[15px] leading-[1.9] text-[#aaa7b7]">
+            <p className="mt-4 text-[15px] leading-[1.9] text-theme-secondary">
               Good software is more than code. It's about making thoughtful
               decisions and building things that last.
             </p>
           </div>
 
           <div className="hidden lg:block">
-            <p className="text-xs tracking-wide text-[#777384]">
+            <p className="text-xs tracking-wide text-theme-muted">
               Engineering with intention.
             </p>
           </div>

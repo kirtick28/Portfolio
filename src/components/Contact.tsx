@@ -60,12 +60,21 @@ export default function Contact() {
     }
   });
 
+  const fieldClass =
+    'w-full border-b border-[var(--contact-field-border)] bg-transparent py-3 text-sm text-[var(--contact-text)] outline-none transition-colors duration-300 placeholder:text-[var(--contact-placeholder)] hover:border-[var(--contact-field-hover)] focus:border-[#f72585]';
+
+  const labelClass =
+    'mb-3 block text-xs font-medium text-[var(--contact-label)] transition-colors group-focus-within:text-[#f72585]';
+
+  const socialClass =
+    'group inline-flex items-center gap-3 rounded-full border border-[var(--contact-social-border)] px-5 py-3 text-xs font-semibold text-[var(--contact-social-text)] transition-all duration-300 hover:border-[#f72585]/50 hover:bg-[#f72585]/[0.06] hover:text-[var(--contact-text)]';
+
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#08080c] pt-16 text-white sm:pt-20 lg:pt-24"
+      className="contact-section relative isolate overflow-hidden border-t border-[var(--contact-section-border)] pt-16 text-[var(--contact-text)] sm:pt-20 lg:pt-24"
     >
-      {/* Subtle pink ambient lighting */}
+      {/* Ambient lighting */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-64 top-[18%] h-[440px] w-[440px] rounded-full bg-[#f72585]/[0.045] blur-[150px]"
@@ -73,11 +82,11 @@ export default function Contact() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-64 bottom-[15%] h-[400px] w-[400px] rounded-full bg-[#f72585]/[0.035] blur-[150px]"
+        className="pointer-events-none absolute -left-64 bottom-[15%] h-[400px] w-[400px] rounded-full bg-[#8a2be2]/[0.045] blur-[150px]"
       />
 
       <div className="relative z-10 mx-auto max-w-[90rem] px-6 sm:px-10 lg:px-16">
-        {/* Heading — preserved */}
+        {/* Heading */}
         <div className="mb-16 flex flex-col items-center justify-center text-center sm:mb-24">
           <span
             className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em]"
@@ -86,34 +95,34 @@ export default function Contact() {
             To Connect
           </span>
 
-          <h2 className="bg-gradient-to-br from-white to-white/30 bg-clip-text font-display text-5xl font-extrabold tracking-tighter text-transparent sm:text-7xl lg:text-8xl">
+          <h2 className="bg-gradient-to-br from-[var(--contact-heading-start)] to-[var(--contact-heading-end)] bg-clip-text font-display text-5xl font-extrabold tracking-tighter text-transparent sm:text-7xl lg:text-8xl">
             CONTACT ME
           </h2>
         </div>
 
         <div className="mb-24 grid grid-cols-1 gap-16 lg:mb-28 lg:grid-cols-12 lg:gap-20">
-          {/* LEFT: INTRODUCTION AND CONTACT DETAILS */}
+          {/* Left: Introduction and contact details */}
           <motion.div {...motionProps()} className="lg:col-span-5">
-            <span className="mb-5 block font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b8e9f]">
+            <span className="mb-5 block font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--contact-muted)]">
               HAVE A PROJECT IN MIND?
             </span>
 
-            <h3 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h3 className="max-w-lg font-display text-3xl font-bold leading-tight tracking-tight text-[var(--contact-text)] sm:text-4xl lg:text-5xl">
               Let&apos;s build something
               <span style={{ color: ACCENT }}> meaningful.</span>
             </h3>
 
-            <p className="mt-6 max-w-md text-sm leading-7 text-[#9899aa]">
+            <p className="mt-6 max-w-md text-sm leading-7 text-[var(--contact-body)]">
               Have an idea, an opportunity, or something interesting to discuss?
               Send me a message. I&apos;d love to hear what you&apos;re working
               on.
             </p>
 
-            {/* Email first, location immediately below */}
-            <div className="mt-10 border-t border-white/[0.10]">
+            {/* Email and location */}
+            <div className="mt-10 border-t border-[var(--contact-divider)]">
               <a
                 href="mailto:kirtick.mm@gmail.com"
-                className="group flex items-center justify-between gap-4 border-b border-white/[0.10] py-5 transition-colors duration-300 hover:border-[#f72585]/50"
+                className="group flex items-center justify-between gap-4 border-b border-[var(--contact-divider)] py-5 transition-colors duration-300 hover:border-[#f72585]/50"
               >
                 <div className="flex min-w-0 items-center gap-4">
                   <Mail
@@ -122,26 +131,25 @@ export default function Contact() {
                     className="shrink-0 text-[#f72585]"
                   />
 
-                  <span className="break-all text-sm text-[#e5e5ec] transition-colors group-hover:text-white sm:text-base">
+                  <span className="break-all text-sm text-[var(--contact-detail)] transition-colors group-hover:text-[var(--contact-text)] sm:text-base">
                     kirtick.mm@gmail.com
                   </span>
                 </div>
 
                 <ArrowUpRight
                   size={18}
-                  className="shrink-0 text-[#77798a] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#f72585]"
+                  className="shrink-0 text-[var(--contact-muted)] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#f72585]"
                 />
               </a>
 
-              {/* Location directly below email */}
-              <div className="flex items-center gap-4 border-b border-white/[0.10] py-5">
+              <div className="flex items-center gap-4 border-b border-[var(--contact-divider)] py-5">
                 <MapPin
                   size={18}
                   strokeWidth={1.5}
                   className="shrink-0 text-[#f72585]"
                 />
 
-                <span className="text-sm text-[#e5e5ec]">
+                <span className="text-sm text-[var(--contact-detail)]">
                   Coimbatore, Tamil Nadu, India
                 </span>
               </div>
@@ -152,59 +160,52 @@ export default function Contact() {
               <a
                 href="https://github.com/kirtick28"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Visit GitHub profile"
-                className="group inline-flex items-center gap-3 rounded-full border border-white/[0.12] px-5 py-3 text-xs font-semibold text-[#c4c5d0] transition-all duration-300 hover:border-[#f72585]/50 hover:bg-[#f72585]/[0.06] hover:text-white"
+                className={socialClass}
               >
                 <Github size={16} />
-
                 <span>GitHub</span>
-
                 <ArrowUpRight
                   size={13}
-                  className="text-[#77798a] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#f72585]"
+                  className="text-[var(--contact-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#f72585]"
                 />
               </a>
 
               <a
                 href="https://www.linkedin.com/in/kirtick28/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Visit LinkedIn profile"
-                className="group inline-flex items-center gap-3 rounded-full border border-white/[0.12] px-5 py-3 text-xs font-semibold text-[#c4c5d0] transition-all duration-300 hover:border-[#f72585]/50 hover:bg-[#f72585]/[0.06] hover:text-white"
+                className={socialClass}
               >
                 <Linkedin size={16} />
-
                 <span>LinkedIn</span>
-
                 <ArrowUpRight
                   size={13}
-                  className="text-[#77798a] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#f72585]"
+                  className="text-[var(--contact-muted)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#f72585]"
                 />
               </a>
             </div>
           </motion.div>
 
-          {/* RIGHT: CONTACT FORM */}
+          {/* Right: Contact form */}
           <motion.div {...motionProps(0.1)} className="lg:col-span-7">
             <form onSubmit={handleSubmit} className="relative">
-              <div className="mb-9 flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.12] pb-5">
-                <h3 className="font-display text-xl font-bold tracking-tight text-white sm:text-2xl">
+              <div className="mb-9 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--contact-divider)] pb-5">
+                <h3 className="font-display text-xl font-bold tracking-tight text-[var(--contact-text)] sm:text-2xl">
                   Send an enquiry
                 </h3>
 
-                <span className="font-mono text-[10px] tracking-wide text-[#77798a]">
+                <span className="font-mono text-[10px] tracking-wide text-[var(--contact-muted)]">
                   * REQUIRED
                 </span>
               </div>
 
-              {/* Name fields */}
+              {/* First and last name */}
               <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-8">
                 <div className="group">
-                  <label
-                    htmlFor="contact-first-name"
-                    className="mb-3 block text-xs font-medium text-[#a1a2b1] transition-colors group-focus-within:text-[#f72585]"
-                  >
+                  <label htmlFor="contact-first-name" className={labelClass}>
                     First name <span className="text-[#f72585]">*</span>
                   </label>
 
@@ -217,15 +218,12 @@ export default function Contact() {
                     placeholder="Your first name"
                     value={formData.firstName}
                     onChange={(e) => updateField('firstName', e.target.value)}
-                    className="w-full border-b border-white/[0.15] bg-transparent py-3 text-sm text-white outline-none transition-colors duration-300 placeholder:text-[#555765] hover:border-white/30 focus:border-[#f72585]"
+                    className={fieldClass}
                   />
                 </div>
 
                 <div className="group">
-                  <label
-                    htmlFor="contact-last-name"
-                    className="mb-3 block text-xs font-medium text-[#a1a2b1] transition-colors group-focus-within:text-[#f72585]"
-                  >
+                  <label htmlFor="contact-last-name" className={labelClass}>
                     Last name <span className="text-[#f72585]">*</span>
                   </label>
 
@@ -238,20 +236,15 @@ export default function Contact() {
                     placeholder="Your last name"
                     value={formData.lastName}
                     onChange={(e) => updateField('lastName', e.target.value)}
-                    className="w-full border-b border-white/[0.15] bg-transparent py-3 text-sm text-white outline-none transition-colors duration-300 placeholder:text-[#555765] hover:border-white/30 focus:border-[#f72585]"
+                    className={fieldClass}
                   />
                 </div>
               </div>
 
-              {/* Email + Enquiry type */}
-              {/* Email + Enquiry type — side by side */}
+              {/* Email and enquiry type remain side by side */}
               <div className="mt-8 grid grid-cols-1 gap-7 sm:grid-cols-2 sm:gap-8">
-                {/* Email */}
                 <div className="group min-w-0">
-                  <label
-                    htmlFor="contact-email"
-                    className="mb-3 block text-xs font-medium text-[#a1a2b1] transition-colors group-focus-within:text-[#f72585]"
-                  >
+                  <label htmlFor="contact-email" className={labelClass}>
                     Email address <span className="text-[#f72585]">*</span>
                   </label>
 
@@ -264,16 +257,12 @@ export default function Contact() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => updateField('email', e.target.value)}
-                    className="w-full border-b border-white/[0.15] bg-transparent py-3 text-sm text-white outline-none transition-colors duration-300 placeholder:text-[#555765] hover:border-white/30 focus:border-[#f72585]"
+                    className={fieldClass}
                   />
                 </div>
 
-                {/* Enquiry type — original native dropdown */}
                 <div className="group min-w-0">
-                  <label
-                    htmlFor="contact-service"
-                    className="mb-3 block text-xs font-medium text-[#a1a2b1] transition-colors group-focus-within:text-[#f72585]"
-                  >
+                  <label htmlFor="contact-service" className={labelClass}>
                     What would you like to discuss?
                   </label>
 
@@ -282,39 +271,23 @@ export default function Contact() {
                     name="service"
                     value={formData.service}
                     onChange={(e) => updateField('service', e.target.value)}
-                    className="w-full appearance-none border-b border-white/[0.15] bg-[#08080c] py-3 text-sm text-white outline-none transition-colors duration-300 hover:border-white/30 focus:border-[#f72585]"
+                    className={`${fieldClass} contact-select`}
                   >
-                    <option value="" className="bg-[#0d0d13]">
-                      Choose a topic
-                    </option>
-                    <option value="Job opportunity" className="bg-[#0d0d13]">
-                      Job opportunity
-                    </option>
-                    <option value="Freelance project" className="bg-[#0d0d13]">
-                      Freelance project
-                    </option>
-                    <option value="Collaboration" className="bg-[#0d0d13]">
-                      Collaboration
-                    </option>
-                    <option
-                      value="Technical discussion"
-                      className="bg-[#0d0d13]"
-                    >
+                    <option value="">Choose a topic</option>
+                    <option value="Job opportunity">Job opportunity</option>
+                    <option value="Freelance project">Freelance project</option>
+                    <option value="Collaboration">Collaboration</option>
+                    <option value="Technical discussion">
                       Technical discussion
                     </option>
-                    <option value="Other enquiry" className="bg-[#0d0d13]">
-                      Other
-                    </option>
+                    <option value="Other enquiry">Other</option>
                   </select>
                 </div>
               </div>
 
-              {/* Message — 3 visible rows, manually expandable */}
+              {/* Message */}
               <div className="group mt-8">
-                <label
-                  htmlFor="contact-message"
-                  className="mb-3 block text-xs font-medium text-[#a1a2b1] transition-colors group-focus-within:text-[#f72585]"
-                >
+                <label htmlFor="contact-message" className={labelClass}>
                   Message <span className="text-[#f72585]">*</span>
                 </label>
 
@@ -326,19 +299,19 @@ export default function Contact() {
                   placeholder="Tell me a little about what you have in mind..."
                   value={formData.description}
                   onChange={(e) => updateField('description', e.target.value)}
-                  className="w-full resize-y border-b border-white/[0.15] bg-transparent py-3 text-sm leading-7 text-white outline-none transition-colors duration-300 placeholder:text-[#555765] hover:border-white/30 focus:border-[#f72585]"
+                  className={`${fieldClass} resize-y leading-7`}
                 />
               </div>
 
               {/* Submit */}
               <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-xs text-xs leading-6 text-[#77798a]">
+                <p className="max-w-xs text-xs leading-6 text-[var(--contact-muted)]">
                   Your email app will open with your message ready to send.
                 </p>
 
                 <button
                   type="submit"
-                  className="btn-neon-pill group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f72585] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080c]"
+                  className="btn-neon-pill group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f72585] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--contact-section-bg)]"
                 >
                   <span>
                     {submitted ? 'Open email app again' : 'Send message'}

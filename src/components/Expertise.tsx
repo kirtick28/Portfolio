@@ -302,7 +302,7 @@ function ExpertiseCard({ item, index }: { item: Capability; index: number }) {
       className="group relative min-w-0 cursor-default"
     >
       <div
-        className="relative flex h-full min-h-[390px] flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-[#0d0d13] p-6 transition-[border-color,box-shadow,background-color] duration-500 ease-out group-hover:border-white/[0.17] group-hover:bg-[#101017] group-hover:shadow-[0_24px_65px_rgba(0,0,0,0.35)] sm:min-h-[410px] sm:p-8"
+        className="expertise-card group relative flex h-full min-h-[390px] flex-col overflow-hidden rounded-2xl border p-6 transition-[border-color,box-shadow,background-color] duration-500 ease-out sm:min-h-[410px] sm:p-8"
         style={{ transformStyle: 'preserve-3d' }}
       >
         <CapabilityVisual item={item} />
@@ -326,7 +326,7 @@ function ExpertiseCard({ item, index }: { item: Capability; index: number }) {
           </div>
 
           {/* Reduced max-w to prevent overlapping the visual icon */}
-          <h3 className="max-w-[220px] font-display text-2xl font-bold leading-tight tracking-tight text-[#f1f1f5] transition-colors duration-300 group-hover:text-white sm:max-w-[260px] sm:text-3xl">
+          <h3 className="expertise-card-title max-w-[220px] font-display text-2xl font-bold leading-tight tracking-tight transition-colors duration-300 sm:max-w-[260px] sm:text-3xl">
             {item.title}
           </h3>
 
@@ -363,7 +363,7 @@ export default function Expertise() {
   return (
     <section
       id="expertise"
-      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#08080c] py-16 text-white sm:py-20 lg:py-24"
+      className="expertise-section relative isolate overflow-hidden border-t py-16 sm:py-20 lg:py-24"
     >
       {/* Ambient background lighting */}
       <div
@@ -382,7 +382,7 @@ export default function Expertise() {
           <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
             What I Work On
           </span>
-          <h2 className="font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl bg-gradient-to-br from-white to-white/30 bg-clip-text text-transparent">
+          <h2 className="expertise-heading font-display text-5xl font-extrabold tracking-tighter sm:text-7xl lg:text-8xl">
             EXPERTISE
           </h2>
         </div>
