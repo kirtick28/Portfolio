@@ -1,16 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
 @import url('https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css');
+
 @import 'tailwindcss';
+
+/* ========================================
+   ROOT VARIABLES
+======================================== */
 
 :root {
   --night: #090a0f;
   --night-card: #12131a;
   --night-card-border: rgba(255, 255, 255, 0.12);
+
   --light-bg: #ececf0;
   --light-card: #ffffff;
   --light-border: rgba(0, 0, 0, 0.09);
   --light-text: #111218;
   --light-muted: #5e606e;
+
   --neon-purple: #8a2be2;
   --neon-pink: #f72585;
   --neon-coral: #ff5e7e;
@@ -21,6 +29,10 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'Space Mono', monospace;
 }
+
+/* ========================================
+   GLOBAL STYLES
+======================================== */
 
 * {
   box-sizing: border-box;
@@ -36,9 +48,9 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
   overflow-x: hidden;
   background-color: var(--night);
-  min-width: 320px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -47,30 +59,43 @@ body {
   color: #ffffff;
 }
 
-/* Custom Scrollbar */
+/* ========================================
+   CUSTOM SCROLLBAR
+======================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #090a0f;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #232533;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #3e4157;
 }
 
-/* Typography Helpers */
+/* ========================================
+   TYPOGRAPHY HELPERS
+======================================== */
+
 .font-display {
   font-family: var(--font-display);
 }
+
 .font-mono {
   font-family: var(--font-mono);
 }
 
-/* Neon Pill Gradient Button from Reference */
+/* ========================================
+   NEON GRADIENT BUTTON
+======================================== */
+
 .btn-neon-pill {
   position: relative;
   display: inline-flex;
@@ -78,21 +103,21 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 12px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #ffffff;
   background: linear-gradient(95deg, #7b2cbf 0%, #c72585 50%, #f72585 100%);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
   box-shadow:
     0 0 25px rgba(247, 37, 133, 0.4),
     inset 0 1px 1px rgba(255, 255, 255, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-decoration: none;
 }
 
 .btn-neon-pill:hover {
@@ -103,6 +128,10 @@ body {
   filter: brightness(1.1);
 }
 
+/* ========================================
+   GLASS BUTTON
+======================================== */
+
 .btn-glass-pill {
   position: relative;
   display: inline-flex;
@@ -110,35 +139,38 @@ body {
   justify-content: center;
   gap: 8px;
   padding: 11px 24px;
-  border-radius: 9999px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #e2e4ed;
-  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e4ed;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
   backdrop-filter: blur(12px);
   transition: all 0.25s ease;
-  text-decoration: none;
 }
 
 .btn-glass-pill:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #ffffff;
   transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
-/* 3D Embossed Heading Effect (Reference Image 1, 5, 6) */
+/* ========================================
+   3D EMBOSSED TYPOGRAPHY
+======================================== */
+
 .title-3d {
+  color: #e5e7eb;
   font-family: var(--font-display);
   font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
   line-height: 0.88;
-  color: #e5e7eb;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
   text-shadow:
     0 1px 0 #cccccc,
     0 2px 0 #b3b3b3,
@@ -147,19 +179,22 @@ body {
 }
 
 .title-3d-light {
+  color: #1a1b24;
   font-family: var(--font-display);
   font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
   line-height: 0.88;
-  color: #1a1b24;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
   text-shadow:
     0 1px 0 #ffffff,
     0 3px 1px rgba(0, 0, 0, 0.12),
     0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Outline Typography from Reference */
+/* ========================================
+   OUTLINE TYPOGRAPHY
+======================================== */
+
 .text-outline {
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.75);
@@ -170,12 +205,16 @@ body {
   -webkit-text-stroke: 1.5px rgba(20, 20, 26, 0.85);
 }
 
-/* Floating 3D Sticker Animations (Reference Images 3 & 4) */
+/* ========================================
+   FLOATING ANIMATIONS
+======================================== */
+
 @keyframes float-slow {
   0%,
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-14px) rotate(4deg);
   }
@@ -184,8 +223,9 @@ body {
 @keyframes float-reverse {
   0%,
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(12px) rotate(-5deg);
   }
@@ -196,6 +236,7 @@ body {
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.06);
   }
@@ -213,12 +254,22 @@ body {
   animation: pulse-subtle 4s ease-in-out infinite;
 }
 
-/* 3D Floating Stickers Shading & Lighting */
+/* ========================================
+   3D STICKER EFFECTS
+======================================== */
+
+.sticker-3d-star,
+.sticker-3d-cube,
+.sticker-3d-heart,
+.sticker-3d-flower {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .sticker-3d-star {
   filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6))
     drop-shadow(0 0 20px rgba(138, 43, 226, 0.35));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .sticker-3d-star:hover {
   transform: scale(1.15) rotate(15deg);
 }
@@ -226,8 +277,8 @@ body {
 .sticker-3d-cube {
   filter: drop-shadow(0 18px 30px rgba(26, 54, 138, 0.5))
     drop-shadow(0 0 25px rgba(58, 134, 255, 0.4));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .sticker-3d-cube:hover {
   transform: scale(1.15) rotate(-12deg);
 }
@@ -235,8 +286,8 @@ body {
 .sticker-3d-heart {
   filter: drop-shadow(0 18px 25px rgba(180, 20, 50, 0.5))
     drop-shadow(0 0 25px rgba(255, 77, 109, 0.4));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .sticker-3d-heart:hover {
   transform: scale(1.18) rotate(10deg);
 }
@@ -244,33 +295,16 @@ body {
 .sticker-3d-flower {
   filter: drop-shadow(0 18px 30px rgba(90, 30, 160, 0.45))
     drop-shadow(0 0 25px rgba(199, 125, 255, 0.35));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .sticker-3d-flower:hover {
   transform: scale(1.15) rotate(-18deg);
 }
 
-/* Ticker Marquee Animation */
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+/* ========================================
+   STICKY PROJECT CARDS
+======================================== */
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 28s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Sticky Stacking Project Cards (Reference Images 6, 7, 8, 9) */
 .project-stack-container {
   position: relative;
   padding-bottom: 80px;
@@ -284,68 +318,213 @@ body {
     0 25px 60px rgba(0, 0, 0, 0.9);
 }
 
-/* Avatar Stage Backlight and 3D Perspective */
-.avatar-stage-wrap {
-  perspective: 1000px;
-}
-
-.avatar-halo-glow {
-  position: absolute;
-  width: 110%;
-  height: 110%;
-  top: -5%;
-  left: -5%;
-  background: radial-gradient(
-    circle,
-    rgba(138, 43, 226, 0.28) 0%,
-    rgba(247, 37, 133, 0.16) 45%,
-    transparent 72%
-  );
-  border-radius: 50%;
-  filter: blur(28px);
-  pointer-events: none;
-}
-
-/* Geometric Glyphs Strip in Footer (Reference Image 10) */
-.glyph-item {
-  transition:
-    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    filter 0.3s ease;
-  cursor: pointer;
-}
-.glyph-item:hover {
-  transform: translateY(-8px) scale(1.12);
-  filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.2));
-}
-
-.hero-title {
-  font-size: clamp(3.5rem, 6.5vw, 6.9rem);
-  line-height: 0.98;
-  letter-spacing: -0.045em;
-  font-weight: 900;
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-.hero-title > span {
-  white-space: nowrap;
-}
+/* ========================================
+   AVATAR STAGE
+======================================== */
 
 .avatar-stage-wrap {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+.avatar-halo-glow {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(138, 43, 226, 0.28) 0%,
+    rgba(247, 37, 133, 0.16) 45%,
+    transparent 72%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+/* ========================================
+   FOOTER GLYPHS
+======================================== */
+
+.glyph-item {
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    filter 0.3s ease;
+}
+
+.glyph-item:hover {
+  transform: translateY(-8px) scale(1.12);
+  filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.2));
+}
+
+/* ========================================
+   HERO TYPOGRAPHY
+======================================== */
+
+.hero-title {
+  overflow-wrap: normal;
+  word-break: normal;
+  font-size: clamp(3.5rem, 6.5vw, 6.9rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+}
+
+.hero-title > span {
+  white-space: nowrap;
+}
+
+/* ========================================
+   TECH MARQUEE
+======================================== */
+
+.tech-marquee {
+  --marquee-bg: #08080c;
+  --marquee-text: #b7b3c3;
+  --marquee-muted: #777384;
+  --marquee-border: rgba(255, 255, 255, 0.09);
+
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  background: var(--marquee-bg);
+  border-top: 1px solid var(--marquee-border);
+  border-bottom: 1px solid var(--marquee-border);
+}
+
+/* Editorial heading */
+
+.tech-marquee__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px clamp(20px, 5vw, 72px) 13px;
+}
+
+.tech-marquee__label {
+  color: var(--marquee-text);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+
+.tech-marquee__caption {
+  color: var(--marquee-muted);
+  font-size: 11px;
+  letter-spacing: 0.025em;
+}
+
+/* Scrolling viewport and track */
+
+.tech-marquee__viewport {
+  overflow: hidden;
+  padding: 18px 0 21px;
+}
+
+.tech-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: tech-marquee-scroll 65s linear infinite;
+  will-change: transform;
+}
+
+.tech-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(26px, 3.5vw, 54px);
+  padding-right: clamp(26px, 3.5vw, 54px);
+}
+
+/* Technology links */
+
+.tech-marquee__item {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+  color: var(--marquee-text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 180ms ease;
+}
+
+/* Technology logos */
+
+.tech-marquee__icon {
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 22px;
+  line-height: 1;
+  filter: grayscale(0.15);
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+/* Technology names */
+
+.tech-marquee__name {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  transition: color 180ms ease;
+}
+
+/* Separators */
+
+.tech-marquee__item::after {
+  content: '/';
+  margin-left: clamp(14px, 2vw, 28px);
+  color: #494351;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* Hover and keyboard focus */
+
+.tech-marquee__item:hover,
+.tech-marquee__item:focus-visible {
+  color: #ffffff;
+  outline: none;
+}
+
+.tech-marquee__item:hover .tech-marquee__icon,
+.tech-marquee__item:focus-visible .tech-marquee__icon {
+  filter: grayscale(0);
+  transform: translateY(-2px);
+}
+
+.tech-marquee__item:hover .tech-marquee__name,
+.tech-marquee__item:focus-visible .tech-marquee__name {
+  color: #f0abfc;
+}
+
+.tech-marquee__item:focus-visible {
+  border-radius: 2px;
+  box-shadow: 0 2px 0 #d946b9;
+}
+
+/* Seamless marquee animation */
+
+@keyframes tech-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }
+
+/* ========================================
+   RESPONSIVE STYLES
+======================================== */
 
 @media (max-width: 1023px) {
   .hero-title {
@@ -357,9 +536,68 @@ body {
   }
 }
 
+@media (max-width: 640px) {
+  .tech-marquee__header {
+    padding: 13px 20px 10px;
+  }
+
+  .tech-marquee__viewport {
+    padding: 15px 0 17px;
+  }
+
+  .tech-marquee__group {
+    gap: 25px;
+    padding-right: 25px;
+  }
+
+  .tech-marquee__item {
+    gap: 8px;
+  }
+
+  .tech-marquee__icon {
+    font-size: 20px;
+  }
+
+  .tech-marquee__name {
+    font-size: 12px;
+  }
+
+  .tech-marquee__item::after {
+    margin-left: 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .hero-title {
     font-size: clamp(3rem, 13vw, 4.25rem);
     letter-spacing: -0.04em;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .tech-marquee__track {
+    animation: none;
+    will-change: auto;
+  }
+
+  .tech-marquee__viewport {
+    overflow-x: auto;
+  }
+
+  .tech-marquee__group[aria-hidden='true'] {
+    display: none;
   }
 }

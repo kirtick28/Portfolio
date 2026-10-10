@@ -159,10 +159,10 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#050508] py-32 text-white sm:py-48"
+      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#050508] py-16 text-white sm:py-20 lg:py-24"
     >
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="mb-32 flex flex-col items-center justify-center text-center">
+        <div className="mb-16 flex flex-col items-center justify-center text-center sm:mb-24">
           <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
             The Journey So Far
           </span>

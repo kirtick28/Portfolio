@@ -1,4 +1,17 @@
-const TECHNOLOGIES = [
+import { useState } from 'react';
+
+type Technology = {
+  name: string;
+  icon: string;
+  url: string;
+};
+
+interface TechnologyGroupProps {
+  items: Technology[];
+  duplicate?: boolean;
+}
+
+const TECHNOLOGIES: Technology[] = [
   {
     name: 'C',
     icon: 'devicon-c-plain colored',
@@ -25,11 +38,6 @@ const TECHNOLOGIES = [
     url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
   },
   {
-    name: 'SQL',
-    icon: 'devicon-postgresql-plain colored',
-    url: 'https://www.postgresql.org/docs/'
-  },
-  {
     name: 'React',
     icon: 'devicon-react-original colored',
     url: 'https://react.dev/'
@@ -46,7 +54,7 @@ const TECHNOLOGIES = [
   },
   {
     name: 'Next.js',
-    icon: 'devicon-nextjs-original-wordmark',
+    icon: 'devicon-nextjs-original',
     url: 'https://nextjs.org/'
   },
   {
@@ -88,68 +96,60 @@ const TECHNOLOGIES = [
     name: 'Datadog',
     icon: 'devicon-datadog-plain colored',
     url: 'https://www.datadoghq.com/'
-  },
-  {
-    name: 'Data Structures & Algorithms',
-    icon: 'devicon-cplusplus-plain colored',
-    url: 'https://www.geeksforgeeks.org/data-structures/'
-  },
-  {
-    name: 'REST APIs',
-    icon: 'devicon-fastapi-plain colored',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP'
-  },
-  {
-    name: 'OOP',
-    icon: 'devicon-java-plain colored',
-    url: 'https://docs.oracle.com/javase/tutorial/java/concepts/'
-  },
-  {
-    name: 'DBMS',
-    icon: 'devicon-mysql-original colored',
-    url: 'https://www.postgresql.org/docs/'
-  },
-  {
-    name: 'Operating Systems',
-    icon: 'devicon-linux-plain',
-    url: 'https://www.kernel.org/doc/html/latest/'
-  },
-  {
-    name: 'Computer Networks',
-    icon: 'devicon-nginx-original',
-    url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP'
   }
 ];
 
+function TechnologyGroup({ items, duplicate = false }: TechnologyGroupProps) {
+  return (
+    <div
+      className="tech-marquee__group"
+      aria-hidden={duplicate ? 'true' : undefined}
+    >
+      {items.map((tech) => (
+        <a
+          key={tech.name}
+          href={tech.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={duplicate ? -1 : undefined}
+          aria-label={duplicate ? undefined : `Learn about ${tech.name}`}
+          className="tech-marquee__item"
+        >
+          <i className={`tech-marquee__icon ${tech.icon}`} aria-hidden="true" />
+          <span className="tech-marquee__name">{tech.name}</span>
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export default function TechMarquee() {
-  const marqueeItems = [...TECHNOLOGIES, ...TECHNOLOGIES];
+  const [paused, setPaused] = useState(false);
 
   return (
-    <div className="relative py-7 bg-[#0b0c13] border-y border-white/10 overflow-hidden select-none">
-      {/* Left and Right Fade */}
-      <div className="absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-[#0b0c13] to-transparent z-10 pointer-events-none" />
-
-      <div className="absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-[#0b0c13] to-transparent z-10 pointer-events-none" />
-
-      {/* Infinite Logo Marquee */}
-      <div className="marquee-track flex w-max items-center gap-8 sm:gap-12">
-        {marqueeItems.map((tech, index) => (
-          <a
-            key={`${tech.name}-${index}`}
-            href={tech.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Learn about ${tech.name}`}
-            title={tech.name}
-            className="group flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.025] text-[#777b8e] transition-all duration-300 hover:border-[#f72585]/40 hover:bg-white/[0.07] hover:text-white hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(247,37,133,0.10)]"
-          >
-            <i
-              className={`${tech.icon} text-[26px] sm:text-[30px] transition-transform duration-300 group-hover:scale-110`}
-              aria-hidden="true"
-            />
-          </a>
-        ))}
+    <section
+      aria-label="Technologies and tools"
+      className="tech-marquee"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          setPaused(false);
+        }
+      }}
+    >
+      <div className="tech-marquee__viewport">
+        <div
+          className="tech-marquee__track"
+          style={{
+            animationPlayState: paused ? 'paused' : 'running'
+          }}
+        >
+          <TechnologyGroup items={TECHNOLOGIES} />
+          <TechnologyGroup items={TECHNOLOGIES} duplicate />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

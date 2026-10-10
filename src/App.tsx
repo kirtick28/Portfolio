@@ -5,7 +5,7 @@ import About from './components/About';
 import Expertise from './components/Expertise';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
-import CodingProfiles from './components/CodingProfiles';
+import CompetitiveProgramming from './components/CompetitiveProgramming';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -20,7 +20,7 @@ export default function App() {
         <Expertise />
         <Experience />
         <Projects />
-        <CodingProfiles />
+        <CompetitiveProgramming />
         <Contact />
       </main>
       <Footer />

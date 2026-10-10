@@ -48,7 +48,7 @@ const profiles = [
 ];
 
 // Extracted Profile Card to handle per-card 3D physics and cursor spotlight
-function ProfileCard({
+function CodingProfileCard({
   profile,
   index
 }: {
@@ -141,10 +141,10 @@ function ProfileCard({
         transformPerspective: 1000,
         transformStyle: 'preserve-3d'
       }}
-      className="group relative block h-[28rem] min-w-0"
+      className="group relative block h-[22rem] min-w-0"
     >
       <div
-        className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/[0.05] bg-[#0a0a0f] p-8 md:p-10 transition-[border-color,box-shadow,background-color] duration-500 ease-out group-hover:border-white/[0.15] group-hover:bg-[#0d0d14] group-hover:shadow-[0_24px_65px_rgba(0,0,0,0.4)]"
+        className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-white/[0.05] bg-[#0a0a0f] p-8 transition-[border-color,box-shadow,background-color] duration-500 ease-out group-hover:border-white/[0.15] group-hover:bg-[#0d0d14] group-hover:shadow-[0_24px_65px_rgba(0,0,0,0.4)]"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Cursor-following spotlight */}
@@ -215,7 +215,7 @@ function ProfileCard({
 
         {/* Top Section: Branding & Identity */}
         <div
-          className="relative z-10 flex flex-col items-start gap-6"
+          className="relative z-10 flex flex-col items-start gap-5"
           style={{ transform: 'translateZ(12px)' }}
         >
           <div className="flex w-full items-start justify-between">
@@ -248,23 +248,23 @@ function ProfileCard({
           className="relative z-10 flex flex-col items-start mt-auto"
           style={{ transform: 'translateZ(24px)' }}
         >
-          {/* Tag replacing the giant text for the Rank */}
-          <span
-            className="mb-4 rounded-md border px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider transition-colors duration-300"
-            style={{
-              color: profile.accent,
-              backgroundColor: `${profile.accent}10`,
-              borderColor: `${profile.accent}30`
-            }}
-          >
-            {profile.rank}
-          </span>
+          <div className="mb-3 flex items-center gap-2">
+            <span
+              className="font-mono text-xs font-bold uppercase tracking-[0.15em]"
+              style={{
+                color: profile.accent,
+                textShadow: `0 0 15px ${profile.accent}90`
+              }}
+            >
+              {profile.rank}
+            </span>
+          </div>
 
           <h4 className="font-display text-6xl md:text-7xl font-black tracking-tighter text-white drop-shadow-xl transition-transform duration-500 group-hover:scale-[1.02] origin-left">
             {profile.value}
           </h4>
 
-          <p className="mt-3 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b8e9f]">
+          <p className="mt-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8b8e9f]">
             {profile.metric}
           </p>
         </div>
@@ -281,11 +281,14 @@ function ProfileCard({
   );
 }
 
-export default function CodingProfiles() {
+export default function CompetitiveProgramming() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#050508] py-32 text-white sm:py-40">
+    <section
+      id="competitiveprogramming"
+      className="relative isolate overflow-hidden border-t border-white/[0.09] bg-[#050508] py-16 text-white sm:py-20 lg:py-24"
+    >
       {/* Deep space ambient grid & glow */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center opacity-30 mix-blend-screen">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -293,7 +296,7 @@ export default function CodingProfiles() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="mb-32 flex flex-col items-center justify-center text-center">
+        <div className="mb-16 flex flex-col items-center justify-center text-center sm:mb-24">
           <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
             Algorithm & Data Structures
           </span>
@@ -307,7 +310,7 @@ export default function CodingProfiles() {
           className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-10"
         >
           {profiles.map((profile, index) => (
-            <ProfileCard
+            <CodingProfileCard
               key={profile.platform}
               profile={profile}
               index={index}

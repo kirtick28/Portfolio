@@ -60,11 +60,11 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-28 sm:py-36 border-t border-white/[0.09] bg-[#08080c] relative"
+      className="relative border-t border-white/[0.09] bg-[#08080c] py-16 sm:py-20 lg:py-24"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Section Heading */}
-        <div className="mb-32 flex flex-col items-center justify-center text-center">
+        <div className="mb-16 flex flex-col items-center justify-center text-center sm:mb-24">
           <span className="mb-6 font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-[#a78bfa]">
             Selected Work
           </span>
