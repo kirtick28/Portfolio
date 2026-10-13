@@ -1,4 +1,4 @@
-# Kirtick Portfolio — Visual Reset (Stage 2)
+# Kirtick Portfolio
 
 React + TypeScript + Vite + Tailwind CSS v4. This version follows the attached video more closely: dark framed hero, condensed display typography, thin outlines, vivid purple/pink gradient CTA, decorative sticker accents, and alternating dark/light sections.
 
