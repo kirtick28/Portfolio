@@ -1,4 +1,4 @@
-import { useRef, type MouseEvent } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import {
   motion,
@@ -9,12 +9,111 @@ import {
   useReducedMotion
 } from 'motion/react';
 
-const profiles = [
+type PlatformName = 'LeetCode' | 'Codeforces' | 'CodeChef';
+
+interface CodingProfile {
+  platform: PlatformName;
+  username: string;
+  metric: string;
+  value: string;
+  rank: string;
+  accent: string;
+  iconPath: string;
+  link: string;
+  graphPath: string;
+}
+
+interface ApiPlatformData {
+  maxRating: number;
+  badge?: string;
+  history: number[];
+}
+
+interface CpStatsResponse {
+  leetcode: ApiPlatformData | null;
+  codeforces: ApiPlatformData | null;
+  codechef: ApiPlatformData | null;
+}
+
+// Step 4: Dynamic rank & color mapper based on platform thresholds
+function getPlatformTheme(
+  platform: PlatformName,
+  rating: number,
+  badge?: string
+): { rank: string; accent: string } {
+  if (platform === 'LeetCode') {
+    return {
+      rank: badge || 'Knight',
+      accent: '#ffa116'
+    };
+  }
+
+  if (platform === 'Codeforces') {
+    if (rating < 1200) return { rank: 'Newbie', accent: '#9ca3af' }; // Gray
+    if (rating < 1400) return { rank: 'Pupil', accent: '#4ade80' }; // Green
+    if (rating < 1600) return { rank: 'Specialist', accent: '#2dd4bf' }; // Cyan
+    if (rating < 1900) return { rank: 'Expert', accent: '#60a5fa' }; // Blue
+    if (rating < 2100) return { rank: 'Candidate Master', accent: '#c084fc' }; // Violet
+    if (rating < 2400) return { rank: 'Master', accent: '#fb923c' }; // Orange
+    return { rank: 'Grandmaster', accent: '#f87171' }; // Red
+  }
+
+  // CodeChef star bands
+  if (rating <= 1399) return { rank: '1★', accent: '#9ca3af' }; // Gray
+  if (rating <= 1599) return { rank: '2★', accent: '#4ade80' }; // Green
+  if (rating <= 1799) return { rank: '3★', accent: '#60a5fa' }; // Blue
+  if (rating <= 1999) return { rank: '4★', accent: '#a855f7' }; // Purple
+  if (rating <= 2199) return { rank: '5★', accent: '#facc15' }; // Yellow
+  if (rating <= 2499) return { rank: '6★', accent: '#fb923c' }; // Orange
+  return { rank: '7★', accent: '#ef4444' }; // Red
+}
+
+// Step 5: Convert raw contest rating history into a smooth cubic Bézier SVG path
+function buildSmoothGraphPath(history: number[], fallbackPath: string): string {
+  if (!history || history.length < 2) return fallbackPath;
+
+  const width = 400;
+  const topY = 25;
+  const bottomY = 170;
+
+  const min = Math.min(...history);
+  const max = Math.max(...history);
+  const range = max - min || 1;
+
+  const points = history.map((val, idx) => {
+    const x = (idx / (history.length - 1)) * width;
+    const normalized = (val - min) / range;
+    const y = bottomY - normalized * (bottomY - topY);
+    return { x, y };
+  });
+
+  const clampY = (y: number) => Math.max(15, Math.min(185, y));
+
+  let d = `M ${points[0].x.toFixed(1)},${points[0].y.toFixed(1)}`;
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i === 0 ? i : i - 1];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[i + 2 < points.length ? i + 2 : i + 1];
+
+    const cp1x = p1.x + (p2.x - p0.x) / 6;
+    const cp1y = clampY(p1.y + (p2.y - p0.y) / 6);
+    const cp2x = p2.x - (p3.x - p1.x) / 6;
+    const cp2y = clampY(p2.y - (p3.y - p1.y) / 6);
+
+    d += ` C ${cp1x.toFixed(1)},${cp1y.toFixed(1)} ${cp2x.toFixed(1)},${cp2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+  }
+
+  return d;
+}
+
+const INITIAL_PROFILES: CodingProfile[] = [
   {
     platform: 'LeetCode',
     username: 'kirtick_28',
     metric: 'Max Contest Rating',
-    value: '1895',
+    value: '1906',
     rank: 'Knight',
     accent: '#ffa116',
     iconPath: '/icons/leetcode.svg',
@@ -26,7 +125,7 @@ const profiles = [
     platform: 'Codeforces',
     username: 'kirtick_28',
     metric: 'Max Rating',
-    value: '957',
+    value: '1060',
     rank: 'Newbie',
     accent: '#9ca3af',
     iconPath: '/icons/codeforces.svg',
@@ -38,16 +137,14 @@ const profiles = [
     platform: 'CodeChef',
     username: 'kirtick_28',
     metric: 'Highest Rating',
-    value: '1440',
+    value: '1461',
     rank: '2★',
     accent: '#4ade80',
     iconPath: '/icons/codechef.svg',
     link: 'https://www.codechef.com/users/kirtick_28',
     graphPath: 'M 0,160 C 80,150 120,100 200,95 C 280,90 320,60 400,50'
   }
-] as const;
-
-type CodingProfile = (typeof profiles)[number];
+];
 
 function CodingProfileCard({
   profile,
@@ -199,6 +296,7 @@ function CodingProfileCard({
             />
 
             <motion.path
+              key={profile.graphPath}
               d={profile.graphPath}
               fill="none"
               stroke={profile.accent}
@@ -291,6 +389,54 @@ function CodingProfileCard({
 }
 
 export default function CompetitiveProgramming() {
+  const [profiles, setProfiles] = useState<CodingProfile[]>(INITIAL_PROFILES);
+
+  // Step 6: Fetch live ratings, update colors/titles, and plot real SVG curves
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadLiveStats() {
+      try {
+        const res = await fetch('/api/cp-stats');
+        if (!res.ok) return;
+
+        const data: CpStatsResponse = await res.json();
+        if (!isMounted) return;
+
+        setProfiles((prev) =>
+          prev.map((profile) => {
+            const key = profile.platform.toLowerCase() as keyof CpStatsResponse;
+            const live = data[key];
+
+            if (!live || !live.maxRating) return profile;
+
+            const theme = getPlatformTheme(
+              profile.platform,
+              live.maxRating,
+              live.badge
+            );
+
+            return {
+              ...profile,
+              value: String(live.maxRating),
+              rank: theme.rank,
+              accent: theme.accent,
+              graphPath: buildSmoothGraphPath(live.history, profile.graphPath)
+            };
+          })
+        );
+      } catch (err) {
+        console.error('Failed to load live CP stats:', err);
+      }
+    }
+
+    loadLiveStats();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <section
       id="competitiveprogramming"

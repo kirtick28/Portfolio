@@ -36,5 +36,7 @@ pnpm-debug.log*
 *.sln
 *.swp
 
+.vercel
+
 # AI Generated Images
 /AI-Generated-Images
